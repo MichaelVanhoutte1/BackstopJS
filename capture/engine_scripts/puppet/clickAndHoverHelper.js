@@ -15,14 +15,22 @@ module.exports = async (page, scenario) => {
   if (hoverSelector) {
     for (const hoverSelectorIndex of [].concat(hoverSelector)) {
       await page.waitForSelector(hoverSelectorIndex);
-      await page.hover(hoverSelectorIndex);
+      await page.evaluate(hoverSelectorIndex => {
+				for (var element of document.querySelectorAll(hoverSelectorIndex)) {
+					element.hover();
+				}
+			}, hoverSelectorIndex);
     }
   }
 
   if (clickSelector) {
     for (const clickSelectorIndex of [].concat(clickSelector)) {
-      await page.waitForSelector(clickSelectorIndex);
-      await page.click(clickSelectorIndex);
+      await page.waitFor(clickSelectorIndex);
+      await page.evaluate(clickSelectorIndex => {
+				for (var element of document.querySelectorAll(clickSelectorIndex)) {
+					element.click();
+				}
+			}, clickSelectorIndex);
     }
   }
 
