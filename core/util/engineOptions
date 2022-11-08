@@ -71,7 +71,8 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
     {},
     {
       ignoreHTTPSErrors: true,
-      headless: !config.debugWindow
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
     },
     config.engineOptions
   );
