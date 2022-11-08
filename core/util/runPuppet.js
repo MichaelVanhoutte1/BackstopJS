@@ -72,6 +72,7 @@ async function processScenarioView (scenario, variantOrScenarioLabelSafe, scenar
     {
       ignoreHTTPSErrors: true,
       headless: true,
+      dumpio: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     },
     config.engineOptions
